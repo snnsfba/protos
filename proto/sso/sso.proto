@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+// desc: Package Description
+package auth;
+
+option go_package = "my.sso.v1;ssov1";
+
+service Auth {
+    rpc Register (RegisterRequest) returns (RegisterResponse);
+    rpc Login (LoginRequest) returns (LoginResponse);
+    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponce);
+}
+
+message RegisterRequest {
+    string email = 1; // email пользователя для регистрации
+    string password = 2; // password пользователя для регистрации
+}
+
+message RegisterResponse {
+    int64 user_id = 1; // User ID для зарегистрированного пользователя
+}
+
+message LoginRequest {
+    string email = 1; // email пользователя для входа
+    string password = 2; // password пользователя для входа 
+    int32 app_id = 3; // ID приложения для входа
+}
+
+message LoginResponse {
+    string token = 1; // токен аутентификации вошедшего пользователя
+}
+
+message IsAdminRequest {
+    int64 user_id = 1; // показывает админ пользователь или нет
+}
+
+message IsAdminResponce {
+    bool is_admin = 1; // показывает является ли пользователь админом
+}
+
+
+
