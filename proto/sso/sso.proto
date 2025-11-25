@@ -8,7 +8,7 @@ option go_package = "my.sso.v1;ssov1";
 service Auth {
     rpc Register (RegisterRequest) returns (RegisterResponse);
     rpc Login (LoginRequest) returns (LoginResponse);
-    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponce);
+    rpc IsAdmin (IsAdminRequest) returns (IsAdminResponse);
 }
 
 message RegisterRequest {
@@ -34,7 +34,7 @@ message IsAdminRequest {
     int64 user_id = 1; // показывает админ пользователь или нет
 }
 
-message IsAdminResponce {
+message IsAdminResponse {
     bool is_admin = 1; // показывает является ли пользователь админом
 }
 
